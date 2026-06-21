@@ -281,9 +281,9 @@ void visitShop(Character* player) {
     std::cout << "  현재 골드: \033[33m" << player->getGold() << "G\033[0m\n\n";
 
     while (true) {
-        std::cout << "  [1] HP 포션      (\033[33m30G\033[0m) - HP +50\n";
-        std::cout << "  [2] 공격 강화    (\033[33m50G\033[0m) - ATK +5\n";
-        std::cout << "  [3] 방어 강화    (\033[33m50G\033[0m) - DEF +3\n";
+        std::cout << "  [1] HP 포션      (\033[33m30G\033[0m) - HP +50 회복\n";
+        std::cout << "  [2] 공격 포션    (\033[33m50G\033[0m) - ATK +8 (전투 중 사용)\n";
+        std::cout << "  [3] 방어 강화    (\033[33m50G\033[0m) - DEF +3 (즉시 적용)\n";
         std::cout << "  [0] 떠나기\n\n";
         std::cout << "  > ";
         int ch;
@@ -292,22 +292,22 @@ void visitShop(Character* player) {
         if (ch == 0) break;
         if (ch == 1) {
             if (player->spendGold(30)) {
-                player->heal(50);
-                std::cout << "\033[32m  HP 포션을 사용했습니다. HP +50\033[0m\n\n";
+                player->addItem(Item("HP 포션", "heal", 50, "HP +50 회복"));
+                std::cout << "\033[32m  HP 포션을 인벤토리에 추가했습니다.\033[0m\n\n";
             } else {
                 std::cout << "\033[31m  골드가 부족합니다.\033[0m\n\n";
             }
         } else if (ch == 2) {
             if (player->spendGold(50)) {
-                player->setAttackPower(player->getAttackPower() + 5);
-                std::cout << "\033[32m  공격력 +5\033[0m\n\n";
+                player->addItem(Item("공격 포션", "attack", 8, "ATK +8 강화"));
+                std::cout << "\033[32m  공격 포션을 인벤토리에 추가했습니다.\033[0m\n\n";
             } else {
                 std::cout << "\033[31m  골드가 부족합니다.\033[0m\n\n";
             }
         } else if (ch == 3) {
             if (player->spendGold(50)) {
                 player->setDefense(player->getDefense() + 3);
-                std::cout << "\033[32m  방어력 +3\033[0m\n\n";
+                std::cout << "\033[32m  방어력 +3 (즉시 적용)\033[0m\n\n";
             } else {
                 std::cout << "\033[31m  골드가 부족합니다.\033[0m\n\n";
             }

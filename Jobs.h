@@ -61,5 +61,5 @@ public:
     int useSkill(int skillIndex) override;
     std::string getJobName() const override;
     void printStatus() const override;
-    void onTurnEnd();
+    void onTurnEnd() override;
 };

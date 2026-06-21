@@ -58,6 +58,7 @@ public:
     // 스킬 관련
     void printSkills() const;
     virtual void resetBattleSkills();
+    virtual void onTurnEnd() {}  // 턴 종료 훅 (Healer 자동 회복 등)
     const std::vector<ActiveSkill>& getActiveSkills() const;
 
     // Getter

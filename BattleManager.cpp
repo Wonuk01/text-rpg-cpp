@@ -224,9 +224,8 @@ BattleResult BattleManager::startBattle() {
             return BattleResult::LOSE;
         }
 
-        // Healer 자동 회복 (살아있을 때만)
-        Healer* healer = dynamic_cast<Healer*>(player);
-        if (healer) healer->onTurnEnd();
+        // 턴 종료 훅 (Healer는 자동 회복, 기본 구현은 아무것도 안 함)
+        player->onTurnEnd();
     }
 
     if (!monster->isAlive()) {
