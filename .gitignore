@@ -1,0 +1,21 @@
+# 빌드 결과물 (exe는 의도적으로 포함)
+*.o
+*.a
+
+# 세이브 파일
+savefile.txt
+*.save
+
+# 임시/테스트 바이너리 (확장자 없는 것)
+rpg
+rpg_*
+test_*
+
+# IDE
+.vscode/
+.vs/
+*.user
+
+# OS
+Thumbs.db
+.DS_Store
